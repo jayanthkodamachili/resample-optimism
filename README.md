@@ -34,14 +34,14 @@ Requires Python `3.11` or newer. No credentials, no network at runtime, no downl
 ```bash
 pip install -e ".[dev]"
 
-# the headline number, about twenty seconds
+# the headline comparison, a few seconds
 resample-optimism --estimator tree
 
 # everything: lint, suite, re-measure all four experiments, check the prose
 make verify
 ```
 
-`make verify` re-runs the experiments from scratch and takes roughly twelve minutes. `make receipts-fast` reuses the committed experiment JSON for local iteration.
+`make verify` re-runs the experiments from scratch, which takes minutes rather than seconds. `make receipts-fast` reuses the committed experiment JSON for local iteration.
 
 ## The claim, one section at a time
 

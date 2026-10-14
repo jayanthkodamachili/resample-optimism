@@ -1,33 +1,40 @@
-.PHONY: install lint test experiments figures receipts verify clean
+.PHONY: install lint test experiments figures receipts receipts-fast verify clean
+
+# Every target runs through one interpreter. Calling a bare `pytest` picks whichever
+# console script happens to be first on PATH, which on a fresh machine can belong to a
+# different Python than the one holding the editable install. That failure looks like a
+# missing package and is not one: `make test` failed in a clean clone of this repository
+# while `python -m pytest` in the same directory passed.
+PYTHON ?= python3
 
 install:
-	pip install -e ".[dev]"
+	$(PYTHON) -m pip install -e ".[dev]"
 
 lint:
-	ruff check .
+	$(PYTHON) -m ruff check .
 
 test:
-	pytest --cov=resample_optimism --cov-report=term-missing --cov-fail-under=100
+	$(PYTHON) -m pytest --cov=resample_optimism --cov-report=term-missing --cov-fail-under=100
 
 experiments:
-	python experiments/e1_headline.py
-	python experiments/e2_by_resampler.py
-	python experiments/e3_by_estimator.py
-	python experiments/e4_was_it_worth_it.py
+	$(PYTHON) experiments/e1_headline.py
+	$(PYTHON) experiments/e2_by_resampler.py
+	$(PYTHON) experiments/e3_by_estimator.py
+	$(PYTHON) experiments/e4_was_it_worth_it.py
 
 figures:
-	python tools/render_diagram.py
-	python tools/capture_cli.py
+	$(PYTHON) tools/render_diagram.py
+	$(PYTHON) tools/capture_cli.py
 
 # Re-measures everything, then refuses to pass if a document quotes a figure the code no
-# longer produces. Use --reuse locally to skip the twelve minute experiment re-run.
+# longer produces. Use receipts-fast locally to skip the experiment re-run.
 receipts:
-	python tools/collect_metrics.py
-	python tools/check_numbers.py
+	$(PYTHON) tools/collect_metrics.py
+	$(PYTHON) tools/check_numbers.py
 
 receipts-fast:
-	python tools/collect_metrics.py --reuse
-	python tools/check_numbers.py
+	$(PYTHON) tools/collect_metrics.py --reuse
+	$(PYTHON) tools/check_numbers.py
 
 verify: lint test receipts
 
