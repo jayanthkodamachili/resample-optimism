@@ -100,6 +100,8 @@ The honest reading is that the answer depends on the metric, and that the loss u
 
 **The checker's formatter was inferring from names.** `display_strings` originally chose a number's format by looking for substrings like "benefit" in the metric name. Two metrics did not contain the words it looked for, so a ratio published as `6.7000` and a signed mean lost its sign, and the anchors still matched because the anchors were built from the same broken formatter. Formatting is now declared per metric in an explicit set, which is the kind of change that makes a checker worth having.
 
+**`make test` failed in a clean clone while `python -m pytest` passed in the same directory.** The Makefile called a bare `pytest`, which resolved to a console script belonging to a different interpreter than the one holding the editable install, so the suite could not import the package it was testing. The symptom, `ModuleNotFoundError`, points at a missing dependency and the cause was a PATH resolution order. Every target now runs through one `$(PYTHON)`. This is the bug that justifies the clone-and-verify step: nothing in the development directory could have surfaced it.
+
 **Three defensive branches were unreachable and untested.** Coverage sat at 98 percent, and the gap was the `raise` in each factory function for a value the frozen config should already have rejected. Reaching them required `object.__setattr__` to smuggle a bad value past validation, which confirmed they really were unreachable through the public API. They stay, because the alternative to an explicit raise is a function that returns `None` into a pipeline.
 
 ## Architecture
@@ -134,6 +136,7 @@ Its own section, because these are the limits a reviewer should know before trus
 - **No calibration measurement.** Resampling distorts predicted probabilities by construction. This repository does not quantify that, so it cannot say whether correct resampling is harmless for a ranking task and harmful for a pricing one.
 - **The identical-model claim depends on a seeded resampler.** It holds for every resampler shipped here. A resampler drawing from an unseeded source would break it, and the fingerprint test would catch that.
 - **Declared, not observed:** that the generator's distribution resembles any production problem. It is a modelling assumption, not a measurement.
+- **A measured zero is not a zero.** The headline that no cell improved under average precision rests on twelve cell means of five seeds each. A cell cannot resolve an effect smaller than its own seed-to-seed spread, and twelve of the sixty individual runs did improve. What the sweep supports is that twelve cells agree in sign, not that resampling can never help a single case. Separating a small genuine gain from noise in any one cell would need considerably more seeds than five.
 - **The per-seed spread is wide.** In the headline scenario the leaked protocol's optimism spans **0.1601 across seeds**, which is larger than several of the differences the sweeps report. The means are stable over 10 seeds; individual cells are noisier than their means suggest, which is why the minimum and maximum for every cell are in the JSON.
 
 See [ADR-005](docs/adr/ADR-005-what-this-cannot-measure.md).
