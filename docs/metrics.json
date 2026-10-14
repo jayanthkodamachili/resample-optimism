@@ -1,0 +1,139 @@
+{
+  "metrics": {
+    "tests_total": 90,
+    "coverage_line_pct": 100.0,
+    "leaked_cv_mean": 0.9979,
+    "leaked_holdout_mean": 0.8739,
+    "leaked_optimism_mean": 0.124,
+    "corrected_optimism_mean": -0.0164,
+    "identical_model_seeds": 10,
+    "random_over_leaked_cv": 1.0,
+    "random_under_optimism": -0.0222,
+    "worst_estimator_optimism": 0.3215,
+    "mildest_estimator_optimism": 0.0095,
+    "estimator_severity_ratio": 33.9,
+    "e4_cells_total": 12,
+    "e4_runs_total": 60,
+    "e4_ap_cells_positive": 0,
+    "e4_ap_runs_negative": 48,
+    "e4_ap_grand_mean": -0.046,
+    "e4_ap_worst_cell": -0.1063,
+    "e4_auc_cells_positive": 9,
+    "e4_auc_grand_mean": 0.0069,
+    "e4_loss_gain_ratio": 6.7
+  },
+  "display": {
+    "tests_total": "90",
+    "coverage_line_pct": "100",
+    "leaked_cv_mean": "0.9979",
+    "leaked_holdout_mean": "0.8739",
+    "leaked_optimism_mean": "+0.1240",
+    "corrected_optimism_mean": "-0.0164",
+    "identical_model_seeds": "10",
+    "random_over_leaked_cv": "1.0000",
+    "random_under_optimism": "-0.0222",
+    "worst_estimator_optimism": "+0.3215",
+    "mildest_estimator_optimism": "+0.0095",
+    "estimator_severity_ratio": "33.9",
+    "e4_cells_total": "12",
+    "e4_runs_total": "60",
+    "e4_ap_cells_positive": "0",
+    "e4_ap_runs_negative": "48",
+    "e4_ap_grand_mean": "-0.0460",
+    "e4_ap_worst_cell": "-0.1063",
+    "e4_auc_cells_positive": "9",
+    "e4_auc_grand_mean": "+0.0069",
+    "e4_loss_gain_ratio": "6.7"
+  },
+  "anchors": {
+    "tests_total": [
+      "{} tests"
+    ],
+    "coverage_line_pct": [
+      "{} percent line coverage",
+      "{}% line coverage"
+    ],
+    "leaked_cv_mean": [
+      "reports {}",
+      "{} mean ROC-AUC"
+    ],
+    "leaked_holdout_mean": [
+      "scores {}",
+      "{} on the holdout"
+    ],
+    "leaked_optimism_mean": [
+      "{} points",
+      "optimism of {}"
+    ],
+    "corrected_optimism_mean": [
+      "{} points",
+      "corrected sits at {}"
+    ],
+    "identical_model_seeds": [
+      "{} of 10 seeds",
+      "{}/10 seeds"
+    ],
+    "random_over_leaked_cv": [
+      "a perfect {}",
+      "{} ROC-AUC"
+    ],
+    "random_under_optimism": [
+      "{} for undersampling",
+      "undersampling at {}"
+    ],
+    "worst_estimator_optimism": [
+      "{} points",
+      "costs {}"
+    ],
+    "mildest_estimator_optimism": [
+      "{} points",
+      "to {} for logistic"
+    ],
+    "estimator_severity_ratio": [
+      "{} times",
+      "a factor of {}"
+    ],
+    "e4_cells_total": [
+      "of {} cells",
+      "{} cells swept"
+    ],
+    "e4_runs_total": [
+      "of {} runs",
+      "{} individual runs"
+    ],
+    "e4_ap_cells_positive": [
+      "{} of 12 cells",
+      "{}/12 cells"
+    ],
+    "e4_ap_runs_negative": [
+      "{} of 60",
+      "{}/60 runs"
+    ],
+    "e4_ap_grand_mean": [
+      "{} average precision",
+      "mean of {}"
+    ],
+    "e4_ap_worst_cell": [
+      "worst cell loses {}",
+      "down {}"
+    ],
+    "e4_auc_cells_positive": [
+      "{} of the same 12",
+      "{} cells improve"
+    ],
+    "e4_auc_grand_mean": [
+      "{} ROC-AUC",
+      "gains {}"
+    ],
+    "e4_loss_gain_ratio": [
+      "{} times larger",
+      "{} times the size"
+    ]
+  },
+  "checked_documents": [
+    "README.md",
+    "docs/defense-guide.md",
+    "docs/adr/ADR-005-what-this-cannot-measure.md"
+  ],
+  "note": "every value here is produced by running the suite and the four experiments"
+}

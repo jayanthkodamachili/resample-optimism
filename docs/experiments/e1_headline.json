@@ -1,0 +1,370 @@
+{
+  "experiment": "e1_headline",
+  "question": "How far is the leaked estimate from the honest score of its own model?",
+  "seeds": [
+    20260214,
+    11,
+    2027,
+    404,
+    90210,
+    13,
+    777,
+    31337,
+    5150,
+    1024
+  ],
+  "scenario": {
+    "n_samples": 4000,
+    "n_features": 20,
+    "n_informative": 6,
+    "minority_rate": 0.05,
+    "class_sep": 0.8,
+    "holdout_frac": 0.3,
+    "n_splits": 5,
+    "resampler": "smote",
+    "estimator": "forest",
+    "metric": "roc_auc",
+    "seed": 20260214
+  },
+  "summary": {
+    "leaked_resample_then_cv": {
+      "cv_estimate_mean": 0.9978875,
+      "holdout_score_mean": 0.8739048,
+      "optimism_mean": 0.1239827,
+      "optimism_spread": 0.160055
+    },
+    "correct_resample_in_fold": {
+      "cv_estimate_mean": 0.8574586,
+      "holdout_score_mean": 0.8739048,
+      "optimism_mean": -0.0164462,
+      "optimism_spread": 0.114759
+    },
+    "no_resampling": {
+      "cv_estimate_mean": 0.8311381000000001,
+      "holdout_score_mean": 0.8457691,
+      "optimism_mean": -0.0146312,
+      "optimism_spread": 0.132271
+    }
+  },
+  "per_seed": [
+    {
+      "seed": 20260214,
+      "identical_model": true,
+      "resampling_benefit": -0.011463844797178102,
+      "protocols": {
+        "leaked_resample_then_cv": {
+          "name": "leaked_resample_then_cv",
+          "cv_estimate": 0.998319,
+          "holdout_score": 0.898943,
+          "optimism": 0.099376,
+          "train_rows": 5294,
+          "fingerprint": "ec82034597c8acd3"
+        },
+        "correct_resample_in_fold": {
+          "name": "correct_resample_in_fold",
+          "cv_estimate": 0.882484,
+          "holdout_score": 0.898943,
+          "optimism": -0.016459,
+          "train_rows": 5294,
+          "fingerprint": "ec82034597c8acd3"
+        },
+        "no_resampling": {
+          "name": "no_resampling",
+          "cv_estimate": 0.86129,
+          "holdout_score": 0.910407,
+          "optimism": -0.049117,
+          "train_rows": 2800,
+          "fingerprint": "c89a79961022d1c5"
+        }
+      }
+    },
+    {
+      "seed": 11,
+      "identical_model": true,
+      "resampling_benefit": -0.05822238116197187,
+      "protocols": {
+        "leaked_resample_then_cv": {
+          "name": "leaked_resample_then_cv",
+          "cv_estimate": 0.996092,
+          "holdout_score": 0.785906,
+          "optimism": 0.210186,
+          "train_rows": 5302,
+          "fingerprint": "873cf3a01d8afdc1"
+        },
+        "correct_resample_in_fold": {
+          "name": "correct_resample_in_fold",
+          "cv_estimate": 0.808669,
+          "holdout_score": 0.785906,
+          "optimism": 0.022763,
+          "train_rows": 5302,
+          "fingerprint": "873cf3a01d8afdc1"
+        },
+        "no_resampling": {
+          "name": "no_resampling",
+          "cv_estimate": 0.786483,
+          "holdout_score": 0.844128,
+          "optimism": -0.057645,
+          "train_rows": 2800,
+          "fingerprint": "922439d80aecbb46"
+        }
+      }
+    },
+    {
+      "seed": 2027,
+      "identical_model": true,
+      "resampling_benefit": 0.0231311419857676,
+      "protocols": {
+        "leaked_resample_then_cv": {
+          "name": "leaked_resample_then_cv",
+          "cv_estimate": 0.998147,
+          "holdout_score": 0.925225,
+          "optimism": 0.072922,
+          "train_rows": 5300,
+          "fingerprint": "0ed4cd774c5cc867"
+        },
+        "correct_resample_in_fold": {
+          "name": "correct_resample_in_fold",
+          "cv_estimate": 0.869377,
+          "holdout_score": 0.925225,
+          "optimism": -0.055848,
+          "train_rows": 5300,
+          "fingerprint": "0ed4cd774c5cc867"
+        },
+        "no_resampling": {
+          "name": "no_resampling",
+          "cv_estimate": 0.851566,
+          "holdout_score": 0.902094,
+          "optimism": -0.050528,
+          "train_rows": 2800,
+          "fingerprint": "ca49aa06fa60577b"
+        }
+      }
+    },
+    {
+      "seed": 404,
+      "identical_model": true,
+      "resampling_benefit": 0.03879543149214215,
+      "protocols": {
+        "leaked_resample_then_cv": {
+          "name": "leaked_resample_then_cv",
+          "cv_estimate": 0.99755,
+          "holdout_score": 0.947419,
+          "optimism": 0.050131,
+          "train_rows": 5290,
+          "fingerprint": "4cef622def5ef01d"
+        },
+        "correct_resample_in_fold": {
+          "name": "correct_resample_in_fold",
+          "cv_estimate": 0.886347,
+          "holdout_score": 0.947419,
+          "optimism": -0.061072,
+          "train_rows": 5290,
+          "fingerprint": "4cef622def5ef01d"
+        },
+        "no_resampling": {
+          "name": "no_resampling",
+          "cv_estimate": 0.880346,
+          "holdout_score": 0.908623,
+          "optimism": -0.028277,
+          "train_rows": 2800,
+          "fingerprint": "c9bf0b0fccf4f964"
+        }
+      }
+    },
+    {
+      "seed": 90210,
+      "identical_model": true,
+      "resampling_benefit": 0.06394200789856586,
+      "protocols": {
+        "leaked_resample_then_cv": {
+          "name": "leaked_resample_then_cv",
+          "cv_estimate": 0.997457,
+          "holdout_score": 0.851843,
+          "optimism": 0.145613,
+          "train_rows": 5282,
+          "fingerprint": "69272fc1f57a9690"
+        },
+        "correct_resample_in_fold": {
+          "name": "correct_resample_in_fold",
+          "cv_estimate": 0.857473,
+          "holdout_score": 0.851843,
+          "optimism": 0.005629,
+          "train_rows": 5282,
+          "fingerprint": "69272fc1f57a9690"
+        },
+        "no_resampling": {
+          "name": "no_resampling",
+          "cv_estimate": 0.853889,
+          "holdout_score": 0.787901,
+          "optimism": 0.065988,
+          "train_rows": 2800,
+          "fingerprint": "0a364d86c476d868"
+        }
+      }
+    },
+    {
+      "seed": 13,
+      "identical_model": true,
+      "resampling_benefit": 0.03585386793782608,
+      "protocols": {
+        "leaked_resample_then_cv": {
+          "name": "leaked_resample_then_cv",
+          "cv_estimate": 0.99823,
+          "holdout_score": 0.867669,
+          "optimism": 0.130561,
+          "train_rows": 5276,
+          "fingerprint": "c0bb67211bcbf7e0"
+        },
+        "correct_resample_in_fold": {
+          "name": "correct_resample_in_fold",
+          "cv_estimate": 0.837881,
+          "holdout_score": 0.867669,
+          "optimism": -0.029788,
+          "train_rows": 5276,
+          "fingerprint": "c0bb67211bcbf7e0"
+        },
+        "no_resampling": {
+          "name": "no_resampling",
+          "cv_estimate": 0.765532,
+          "holdout_score": 0.831815,
+          "optimism": -0.066283,
+          "train_rows": 2800,
+          "fingerprint": "522e775b09fdd6f2"
+        }
+      }
+    },
+    {
+      "seed": 777,
+      "identical_model": true,
+      "resampling_benefit": 0.02954930532023048,
+      "protocols": {
+        "leaked_resample_then_cv": {
+          "name": "leaked_resample_then_cv",
+          "cv_estimate": 0.997033,
+          "holdout_score": 0.811657,
+          "optimism": 0.185376,
+          "train_rows": 5294,
+          "fingerprint": "6e00ead1291ea747"
+        },
+        "correct_resample_in_fold": {
+          "name": "correct_resample_in_fold",
+          "cv_estimate": 0.778162,
+          "holdout_score": 0.811657,
+          "optimism": -0.033495,
+          "train_rows": 5294,
+          "fingerprint": "6e00ead1291ea747"
+        },
+        "no_resampling": {
+          "name": "no_resampling",
+          "cv_estimate": 0.783944,
+          "holdout_score": 0.782108,
+          "optimism": 0.001836,
+          "train_rows": 2800,
+          "fingerprint": "0ebda62f15827e6a"
+        }
+      }
+    },
+    {
+      "seed": 31337,
+      "identical_model": true,
+      "resampling_benefit": 0.027871305649083578,
+      "protocols": {
+        "leaked_resample_then_cv": {
+          "name": "leaked_resample_then_cv",
+          "cv_estimate": 0.998813,
+          "holdout_score": 0.871413,
+          "optimism": 0.1274,
+          "train_rows": 5290,
+          "fingerprint": "5ccde25bfdfd93ef"
+        },
+        "correct_resample_in_fold": {
+          "name": "correct_resample_in_fold",
+          "cv_estimate": 0.925099,
+          "holdout_score": 0.871413,
+          "optimism": 0.053687,
+          "train_rows": 5290,
+          "fingerprint": "5ccde25bfdfd93ef"
+        },
+        "no_resampling": {
+          "name": "no_resampling",
+          "cv_estimate": 0.876249,
+          "holdout_score": 0.843541,
+          "optimism": 0.032707,
+          "train_rows": 2800,
+          "fingerprint": "17984c0839e35a24"
+        }
+      }
+    },
+    {
+      "seed": 5150,
+      "identical_model": true,
+      "resampling_benefit": 0.04449254449254447,
+      "protocols": {
+        "leaked_resample_then_cv": {
+          "name": "leaked_resample_then_cv",
+          "cv_estimate": 0.999002,
+          "holdout_score": 0.933148,
+          "optimism": 0.065855,
+          "train_rows": 5292,
+          "fingerprint": "b7a833d108e890d1"
+        },
+        "correct_resample_in_fold": {
+          "name": "correct_resample_in_fold",
+          "cv_estimate": 0.877675,
+          "holdout_score": 0.933148,
+          "optimism": -0.055473,
+          "train_rows": 5292,
+          "fingerprint": "b7a833d108e890d1"
+        },
+        "no_resampling": {
+          "name": "no_resampling",
+          "cv_estimate": 0.831756,
+          "holdout_score": 0.888655,
+          "optimism": -0.0569,
+          "train_rows": 2800,
+          "fingerprint": "4fdf4abf6594ea84"
+        }
+      }
+    },
+    {
+      "seed": 1024,
+      "identical_model": true,
+      "resampling_benefit": 0.08740574862520545,
+      "protocols": {
+        "leaked_resample_then_cv": {
+          "name": "leaked_resample_then_cv",
+          "cv_estimate": 0.998232,
+          "holdout_score": 0.845825,
+          "optimism": 0.152407,
+          "train_rows": 5310,
+          "fingerprint": "89d0187104ecf0f7"
+        },
+        "correct_resample_in_fold": {
+          "name": "correct_resample_in_fold",
+          "cv_estimate": 0.851419,
+          "holdout_score": 0.845825,
+          "optimism": 0.005594,
+          "train_rows": 5310,
+          "fingerprint": "89d0187104ecf0f7"
+        },
+        "no_resampling": {
+          "name": "no_resampling",
+          "cv_estimate": 0.820326,
+          "holdout_score": 0.758419,
+          "optimism": 0.061907,
+          "train_rows": 2800,
+          "fingerprint": "bc028f7ffb004717"
+        }
+      }
+    }
+  ],
+  "headline": {
+    "leaked_cv_mean": 0.9978875,
+    "leaked_holdout_mean": 0.8739048,
+    "leaked_optimism_mean": 0.1239827,
+    "corrected_optimism_mean": -0.0164462,
+    "optimism_ratio": 7.538683708090622,
+    "seeds_with_identical_model": 10,
+    "seeds_total": 10
+  }
+}

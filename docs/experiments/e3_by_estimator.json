@@ -1,0 +1,42 @@
+{
+  "experiment": "e3_by_estimator",
+  "question": "Does leak severity track the model's capacity to memorise a duplicate?",
+  "seeds": [
+    20260214,
+    11,
+    2027,
+    404,
+    90210
+  ],
+  "resampler": "random_over",
+  "by_estimator": {
+    "knn": {
+      "leaked_cv_mean": 0.9876747947332027,
+      "holdout_mean": 0.753406974486924,
+      "optimism_mean": 0.23426782024627882,
+      "optimism_max": 0.2671244797094685
+    },
+    "tree": {
+      "leaked_cv_mean": 0.9773699427344636,
+      "holdout_mean": 0.6559092514540142,
+      "optimism_mean": 0.32146069128044935,
+      "optimism_max": 0.41225694647757216
+    },
+    "forest": {
+      "leaked_cv_mean": 1.0,
+      "holdout_mean": 0.8831185473685121,
+      "optimism_mean": 0.1168814526314879,
+      "optimism_max": 0.198641065140845
+    },
+    "logistic": {
+      "leaked_cv_mean": 0.846618240178489,
+      "holdout_mean": 0.8371341706637484,
+      "optimism_mean": 0.009484069514740479,
+      "optimism_max": 0.053749769746688436
+    }
+  },
+  "worst_estimator": "tree",
+  "worst_optimism": 0.32146069128044935,
+  "mildest_estimator": "logistic",
+  "mildest_optimism": 0.009484069514740479
+}

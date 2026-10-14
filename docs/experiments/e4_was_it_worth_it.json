@@ -1,0 +1,424 @@
+{
+  "experiment": "e4_was_it_worth_it",
+  "question": "Does correctly applied SMOTE beat no resampling on an untouched holdout?",
+  "seeds": [
+    20260214,
+    11,
+    2027,
+    404,
+    90210
+  ],
+  "headline_metric": "average_precision",
+  "sweeps": {
+    "average_precision": {
+      "metric": "average_precision",
+      "cells": [
+        {
+          "estimator": "forest",
+          "minority_rate": 0.02,
+          "benefit_mean": -0.10631689364212812,
+          "benefit_min": -0.2647542628062095,
+          "benefit_max": 0.044556025198432075,
+          "seeds_positive": 1,
+          "seeds_total": 5
+        },
+        {
+          "estimator": "forest",
+          "minority_rate": 0.05,
+          "benefit_mean": -0.04808146695852246,
+          "benefit_min": -0.22824292492642054,
+          "benefit_max": 0.03973938552908812,
+          "seeds_positive": 3,
+          "seeds_total": 5
+        },
+        {
+          "estimator": "forest",
+          "minority_rate": 0.1,
+          "benefit_mean": -0.04468653220556895,
+          "benefit_min": -0.1550012674017649,
+          "benefit_max": 0.009010204370079045,
+          "seeds_positive": 1,
+          "seeds_total": 5
+        },
+        {
+          "estimator": "forest",
+          "minority_rate": 0.2,
+          "benefit_mean": -0.01315296358468756,
+          "benefit_min": -0.04662803975679208,
+          "benefit_max": 0.00930587340677802,
+          "seeds_positive": 1,
+          "seeds_total": 5
+        },
+        {
+          "estimator": "logistic",
+          "minority_rate": 0.02,
+          "benefit_mean": -0.06114888336316717,
+          "benefit_min": -0.11049127397278902,
+          "benefit_max": -0.0003316500348191642,
+          "seeds_positive": 0,
+          "seeds_total": 5
+        },
+        {
+          "estimator": "logistic",
+          "minority_rate": 0.05,
+          "benefit_mean": -0.08003254739611705,
+          "benefit_min": -0.10970716313429513,
+          "benefit_max": -0.044906540890859936,
+          "seeds_positive": 0,
+          "seeds_total": 5
+        },
+        {
+          "estimator": "logistic",
+          "minority_rate": 0.1,
+          "benefit_mean": -0.054565503252788805,
+          "benefit_min": -0.08977029825960009,
+          "benefit_max": -0.03774416891012122,
+          "seeds_positive": 0,
+          "seeds_total": 5
+        },
+        {
+          "estimator": "logistic",
+          "minority_rate": 0.2,
+          "benefit_mean": -0.018915668059462543,
+          "benefit_min": -0.035806069541806096,
+          "benefit_max": -0.003667644125634806,
+          "seeds_positive": 0,
+          "seeds_total": 5
+        },
+        {
+          "estimator": "tree",
+          "minority_rate": 0.02,
+          "benefit_mean": -0.04204523386794662,
+          "benefit_min": -0.11950980392156864,
+          "benefit_max": 0.016753134136068576,
+          "seeds_positive": 2,
+          "seeds_total": 5
+        },
+        {
+          "estimator": "tree",
+          "minority_rate": 0.05,
+          "benefit_mean": -0.01761632553009765,
+          "benefit_min": -0.08610924291252156,
+          "benefit_max": 0.036205121578255894,
+          "seeds_positive": 2,
+          "seeds_total": 5
+        },
+        {
+          "estimator": "tree",
+          "minority_rate": 0.1,
+          "benefit_mean": -0.03695414088204885,
+          "benefit_min": -0.10275077046122677,
+          "benefit_max": 0.09891772399498866,
+          "seeds_positive": 1,
+          "seeds_total": 5
+        },
+        {
+          "estimator": "tree",
+          "minority_rate": 0.2,
+          "benefit_mean": -0.028634787375861604,
+          "benefit_min": -0.054240585103392525,
+          "benefit_max": 0.0008146552316011801,
+          "seeds_positive": 1,
+          "seeds_total": 5
+        }
+      ],
+      "cells_total": 12,
+      "cells_positive": 0,
+      "runs_total": 60,
+      "runs_positive": 12,
+      "runs_negative": 48,
+      "best_cell": {
+        "estimator": "forest",
+        "minority_rate": 0.2,
+        "benefit_mean": -0.01315296358468756,
+        "benefit_min": -0.04662803975679208,
+        "benefit_max": 0.00930587340677802,
+        "seeds_positive": 1,
+        "seeds_total": 5
+      },
+      "worst_cell": {
+        "estimator": "forest",
+        "minority_rate": 0.02,
+        "benefit_mean": -0.10631689364212812,
+        "benefit_min": -0.2647542628062095,
+        "benefit_max": 0.044556025198432075,
+        "seeds_positive": 1,
+        "seeds_total": 5
+      },
+      "grand_mean_benefit": -0.04601257884319978
+    },
+    "roc_auc": {
+      "metric": "roc_auc",
+      "cells": [
+        {
+          "estimator": "forest",
+          "minority_rate": 0.02,
+          "benefit_mean": -0.007862441578061218,
+          "benefit_min": -0.03384747215081407,
+          "benefit_max": 0.00680232044524276,
+          "seeds_positive": 1,
+          "seeds_total": 5
+        },
+        {
+          "estimator": "forest",
+          "minority_rate": 0.05,
+          "benefit_mean": 0.011236471083465127,
+          "benefit_min": -0.05822238116197187,
+          "benefit_max": 0.06394200789856586,
+          "seeds_positive": 3,
+          "seeds_total": 5
+        },
+        {
+          "estimator": "forest",
+          "minority_rate": 0.1,
+          "benefit_mean": 0.013139461448992584,
+          "benefit_min": -0.0012908485630817035,
+          "benefit_max": 0.02831940575673153,
+          "seeds_positive": 4,
+          "seeds_total": 5
+        },
+        {
+          "estimator": "forest",
+          "minority_rate": 0.2,
+          "benefit_mean": 0.006904566035343973,
+          "benefit_min": -0.002070429096430404,
+          "benefit_max": 0.01683581785199928,
+          "seeds_positive": 4,
+          "seeds_total": 5
+        },
+        {
+          "estimator": "logistic",
+          "minority_rate": 0.02,
+          "benefit_mean": -0.0007572126862382067,
+          "benefit_min": -0.0128534704370179,
+          "benefit_max": 0.02090756500485902,
+          "seeds_positive": 2,
+          "seeds_total": 5
+        },
+        {
+          "estimator": "logistic",
+          "minority_rate": 0.05,
+          "benefit_mean": 0.006603155679371464,
+          "benefit_min": 0.0032333921222809092,
+          "benefit_max": 0.008760258724032077,
+          "seeds_positive": 5,
+          "seeds_total": 5
+        },
+        {
+          "estimator": "logistic",
+          "minority_rate": 0.1,
+          "benefit_mean": 0.0050707697232109435,
+          "benefit_min": -0.0039888372093023206,
+          "benefit_max": 0.007790384310528142,
+          "seeds_positive": 4,
+          "seeds_total": 5
+        },
+        {
+          "estimator": "logistic",
+          "minority_rate": 0.2,
+          "benefit_mean": 0.003492406667097092,
+          "benefit_min": 0.0018461326109835419,
+          "benefit_max": 0.0041839921323695295,
+          "seeds_positive": 5,
+          "seeds_total": 5
+        },
+        {
+          "estimator": "tree",
+          "minority_rate": 0.02,
+          "benefit_mean": -0.016204719439778924,
+          "benefit_min": -0.11880341880341871,
+          "benefit_max": 0.07667154170920831,
+          "seeds_positive": 3,
+          "seeds_total": 5
+        },
+        {
+          "estimator": "tree",
+          "minority_rate": 0.05,
+          "benefit_mean": 0.04039460148273131,
+          "benefit_min": -0.008658008658008698,
+          "benefit_max": 0.10480035831434187,
+          "seeds_positive": 4,
+          "seeds_total": 5
+        },
+        {
+          "estimator": "tree",
+          "minority_rate": 0.1,
+          "benefit_mean": 0.01577622057740813,
+          "benefit_min": -0.013118003731343308,
+          "benefit_max": 0.09106143986230952,
+          "seeds_positive": 2,
+          "seeds_total": 5
+        },
+        {
+          "estimator": "tree",
+          "minority_rate": 0.2,
+          "benefit_mean": 0.004584594333230973,
+          "benefit_min": -0.0023249193395332712,
+          "benefit_max": 0.015175937993003652,
+          "seeds_positive": 3,
+          "seeds_total": 5
+        }
+      ],
+      "cells_total": 12,
+      "cells_positive": 9,
+      "runs_total": 60,
+      "runs_positive": 40,
+      "runs_negative": 20,
+      "best_cell": {
+        "estimator": "tree",
+        "minority_rate": 0.05,
+        "benefit_mean": 0.04039460148273131,
+        "benefit_min": -0.008658008658008698,
+        "benefit_max": 0.10480035831434187,
+        "seeds_positive": 4,
+        "seeds_total": 5
+      },
+      "worst_cell": {
+        "estimator": "tree",
+        "minority_rate": 0.02,
+        "benefit_mean": -0.016204719439778924,
+        "benefit_min": -0.11880341880341871,
+        "benefit_max": 0.07667154170920831,
+        "seeds_positive": 3,
+        "seeds_total": 5
+      },
+      "grand_mean_benefit": 0.006864822777231103
+    }
+  },
+  "metrics_disagree": true,
+  "metric": "average_precision",
+  "cells_total": 12,
+  "cells_positive": 0,
+  "runs_total": 60,
+  "runs_positive": 12,
+  "runs_negative": 48,
+  "best_cell": {
+    "estimator": "forest",
+    "minority_rate": 0.2,
+    "benefit_mean": -0.01315296358468756,
+    "benefit_min": -0.04662803975679208,
+    "benefit_max": 0.00930587340677802,
+    "seeds_positive": 1,
+    "seeds_total": 5
+  },
+  "worst_cell": {
+    "estimator": "forest",
+    "minority_rate": 0.02,
+    "benefit_mean": -0.10631689364212812,
+    "benefit_min": -0.2647542628062095,
+    "benefit_max": 0.044556025198432075,
+    "seeds_positive": 1,
+    "seeds_total": 5
+  },
+  "grand_mean_benefit": -0.04601257884319978,
+  "cells": [
+    {
+      "estimator": "forest",
+      "minority_rate": 0.02,
+      "benefit_mean": -0.10631689364212812,
+      "benefit_min": -0.2647542628062095,
+      "benefit_max": 0.044556025198432075,
+      "seeds_positive": 1,
+      "seeds_total": 5
+    },
+    {
+      "estimator": "forest",
+      "minority_rate": 0.05,
+      "benefit_mean": -0.04808146695852246,
+      "benefit_min": -0.22824292492642054,
+      "benefit_max": 0.03973938552908812,
+      "seeds_positive": 3,
+      "seeds_total": 5
+    },
+    {
+      "estimator": "forest",
+      "minority_rate": 0.1,
+      "benefit_mean": -0.04468653220556895,
+      "benefit_min": -0.1550012674017649,
+      "benefit_max": 0.009010204370079045,
+      "seeds_positive": 1,
+      "seeds_total": 5
+    },
+    {
+      "estimator": "forest",
+      "minority_rate": 0.2,
+      "benefit_mean": -0.01315296358468756,
+      "benefit_min": -0.04662803975679208,
+      "benefit_max": 0.00930587340677802,
+      "seeds_positive": 1,
+      "seeds_total": 5
+    },
+    {
+      "estimator": "logistic",
+      "minority_rate": 0.02,
+      "benefit_mean": -0.06114888336316717,
+      "benefit_min": -0.11049127397278902,
+      "benefit_max": -0.0003316500348191642,
+      "seeds_positive": 0,
+      "seeds_total": 5
+    },
+    {
+      "estimator": "logistic",
+      "minority_rate": 0.05,
+      "benefit_mean": -0.08003254739611705,
+      "benefit_min": -0.10970716313429513,
+      "benefit_max": -0.044906540890859936,
+      "seeds_positive": 0,
+      "seeds_total": 5
+    },
+    {
+      "estimator": "logistic",
+      "minority_rate": 0.1,
+      "benefit_mean": -0.054565503252788805,
+      "benefit_min": -0.08977029825960009,
+      "benefit_max": -0.03774416891012122,
+      "seeds_positive": 0,
+      "seeds_total": 5
+    },
+    {
+      "estimator": "logistic",
+      "minority_rate": 0.2,
+      "benefit_mean": -0.018915668059462543,
+      "benefit_min": -0.035806069541806096,
+      "benefit_max": -0.003667644125634806,
+      "seeds_positive": 0,
+      "seeds_total": 5
+    },
+    {
+      "estimator": "tree",
+      "minority_rate": 0.02,
+      "benefit_mean": -0.04204523386794662,
+      "benefit_min": -0.11950980392156864,
+      "benefit_max": 0.016753134136068576,
+      "seeds_positive": 2,
+      "seeds_total": 5
+    },
+    {
+      "estimator": "tree",
+      "minority_rate": 0.05,
+      "benefit_mean": -0.01761632553009765,
+      "benefit_min": -0.08610924291252156,
+      "benefit_max": 0.036205121578255894,
+      "seeds_positive": 2,
+      "seeds_total": 5
+    },
+    {
+      "estimator": "tree",
+      "minority_rate": 0.1,
+      "benefit_mean": -0.03695414088204885,
+      "benefit_min": -0.10275077046122677,
+      "benefit_max": 0.09891772399498866,
+      "seeds_positive": 1,
+      "seeds_total": 5
+    },
+    {
+      "estimator": "tree",
+      "minority_rate": 0.2,
+      "benefit_mean": -0.028634787375861604,
+      "benefit_min": -0.054240585103392525,
+      "benefit_max": 0.0008146552316011801,
+      "seeds_positive": 1,
+      "seeds_total": 5
+    }
+  ]
+}

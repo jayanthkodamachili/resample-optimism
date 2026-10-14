@@ -1,0 +1,47 @@
+{
+  "experiment": "e2_by_resampler",
+  "question": "Does leak severity track row dependence rather than resampling itself?",
+  "seeds": [
+    20260214,
+    11,
+    2027,
+    404,
+    90210
+  ],
+  "estimator": "forest",
+  "by_resampler": {
+    "random_over": {
+      "leaked_cv_mean": 1.0,
+      "holdout_mean": 0.8831185473685121,
+      "optimism_mean": 0.1168814526314879,
+      "optimism_min": 0.05173821975734738,
+      "optimism_max": 0.198641065140845
+    },
+    "smote": {
+      "leaked_cv_mean": 0.9975129241997145,
+      "holdout_mean": 0.8818672933327184,
+      "optimism_mean": 0.11564563086699602,
+      "optimism_min": 0.05013134966891053,
+      "optimism_max": 0.210186227462968
+    },
+    "adasyn": {
+      "leaked_cv_mean": 0.997807356383974,
+      "holdout_mean": 0.880838531234593,
+      "optimism_mean": 0.11696882514938094,
+      "optimism_min": 0.05406636016708344,
+      "optimism_max": 0.18938177254728972
+    },
+    "random_under": {
+      "leaked_cv_mean": 0.8414082023696681,
+      "holdout_mean": 0.8636018498054486,
+      "optimism_mean": -0.02219364743578047,
+      "optimism_min": -0.0648264241876576,
+      "optimism_max": 0.021510822026220233
+    }
+  },
+  "worst_resampler": "adasyn",
+  "worst_optimism": 0.11696882514938094,
+  "mildest_resampler": "random_under",
+  "mildest_optimism": -0.02219364743578047,
+  "severity_ratio": -5.270374123399134
+}
