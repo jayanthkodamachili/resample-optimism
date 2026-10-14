@@ -17,7 +17,6 @@ from _common import table, write  # noqa: E402
 
 from resample_optimism.config import ScenarioConfig  # noqa: E402
 from resample_optimism.optimism import (  # noqa: E402
-    by_name,
     evaluate_all,
     resampling_benefit,
     same_model_shipped,
@@ -93,7 +92,8 @@ def main() -> None:
         for name in payload["summary"]
     ]
     print(f"E1 headline, {len(SEEDS)} seeds, SMOTE + random forest, 5 percent minority\n")
-    print(table(["protocol", "cv est", "holdout", "optimism", "spread"], rows, [30, 10, 11, 11, 10]))
+    headers = ["protocol", "cv est", "holdout", "optimism", "spread"]
+    print(table(headers, rows, [30, 10, 11, 11, 10]))
     head = payload["headline"]
     print()
     print(

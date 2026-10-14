@@ -1,0 +1,17 @@
+{
+  "note": "each command was run by tools/capture_cli.py, exit codes as returned",
+  "runs": [
+    {
+      "command": "resample-optimism --n-samples 2000 --estimator tree",
+      "exit_code": 1
+    },
+    {
+      "command": "resample-optimism --n-samples 2000 --resampler random_under --estimator tree --tolerance 0.02",
+      "exit_code": 0
+    },
+    {
+      "command": "resample-optimism --n-samples 800 --minority-rate 0.005",
+      "exit_code": 2
+    }
+  ]
+}

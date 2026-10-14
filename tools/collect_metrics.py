@@ -66,24 +66,35 @@ def run(cmd: list[str], **kwargs) -> subprocess.CompletedProcess:
     return subprocess.run(cmd, cwd=ROOT, check=False, **kwargs)
 
 
-def measure_suite() -> dict:
-    """Run pytest once, reading the count and coverage from machine readable artefacts."""
+def measure_suite(skip_tests: bool) -> dict:
+    """Read the test count and coverage from machine readable artefacts.
+
+    With skip_tests, the artefacts are expected to already exist because CI ran pytest as
+    its own step. That separation matters: a failing test surfacing here as a traceback
+    from a metrics script is the kind of CI signature that costs an hour to attribute.
+    """
     junit = ROOT / "junit.xml"
     cov = ROOT / "coverage.json"
-    result = run(
-        [
-            sys.executable, "-m", "pytest",
-            f"--junitxml={junit}",
-            "--cov=resample_optimism",
-            "--cov-report=json",
-            "-q",
-        ],
-        capture_output=True,
-        text=True,
-    )
-    if result.returncode != 0:
-        print(result.stdout[-4000:], file=sys.stderr)
-        raise SystemExit("test suite failed, refusing to publish metrics")
+
+    if skip_tests:
+        missing = [p.name for p in (junit, cov) if not p.exists()]
+        if missing:
+            raise SystemExit(f"--skip-tests given but {', '.join(missing)} not found")
+    else:
+        result = run(
+            [
+                sys.executable, "-m", "pytest",
+                f"--junitxml={junit}",
+                "--cov=resample_optimism",
+                "--cov-report=json",
+                "-q",
+            ],
+            capture_output=True,
+            text=True,
+        )
+        if result.returncode != 0:
+            print(result.stdout[-4000:], file=sys.stderr)
+            raise SystemExit("test suite failed, refusing to publish metrics")
 
     suite = ET.parse(junit).getroot()
     node = suite if suite.tag == "testsuite" else suite.find("testsuite")
@@ -192,9 +203,14 @@ def main() -> int:
         action="store_true",
         help="read existing experiment JSON instead of re-running, for local iteration only",
     )
+    parser.add_argument(
+        "--skip-tests",
+        action="store_true",
+        help="read junit.xml and coverage.json produced by a separate pytest step",
+    )
     args = parser.parse_args()
 
-    suite = measure_suite()
+    suite = measure_suite(skip_tests=args.skip_tests)
     experiments = ensure_experiments(rerun=not args.reuse)
     metrics = derive(suite, experiments)
 

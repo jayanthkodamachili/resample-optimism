@@ -20,14 +20,14 @@ def write(name: str, payload: dict) -> Path:
     return path
 
 
+def _row(cells: list[str], widths: list[int]) -> str:
+    return "".join(
+        cell.ljust(width) if i == 0 else cell.rjust(width)
+        for i, (cell, width) in enumerate(zip(cells, widths, strict=True))
+    )
+
+
 def table(headers: list[str], rows: list[list[str]], widths: list[int]) -> str:
-    line = "".join(h.ljust(w) if i == 0 else h.rjust(w) for i, (h, w) in enumerate(zip(headers, widths, strict=True)))
-    out = [line, "-" * sum(widths)]
-    for row in rows:
-        out.append(
-            "".join(
-                c.ljust(w) if i == 0 else c.rjust(w)
-                for i, (c, w) in enumerate(zip(row, widths, strict=True))
-            )
-        )
+    out = [_row(headers, widths), "-" * sum(widths)]
+    out.extend(_row(row, widths) for row in rows)
     return "\n".join(out)

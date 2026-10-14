@@ -72,7 +72,8 @@ def main() -> None:
         for name, stats in payload["by_resampler"].items()
     ]
     print(f"E2 leak severity by resampler, {len(SEEDS)} seeds, random forest\n")
-    print(table(["resampler", "leaked cv", "holdout", "optimism", "worst"], rows, [16, 12, 11, 11, 10]))
+    headers = ["resampler", "leaked cv", "holdout", "optimism", "worst"]
+    print(table(headers, rows, [16, 12, 11, 11, 10]))
     print()
     print(
         f"worst {payload['worst_resampler']} at {payload['worst_optimism']:+.4f}, "
