@@ -50,16 +50,32 @@ ANCHORS: dict[str, list[str]] = {
     "worst_estimator_optimism": ["{} points", "costs {}"],
     "mildest_estimator_optimism": ["{} points", "to {} for logistic"],
     "estimator_severity_ratio": ["{} times", "a factor of {}"],
+    "leaked_optimism_spread": ["{} across seeds", "spread of {}"],
     "e4_cells_total": ["of {} cells", "{} cells swept"],
     "e4_runs_total": ["of {} runs", "{} individual runs"],
     "e4_ap_cells_positive": ["{} of 12 cells", "{}/12 cells"],
-    "e4_ap_runs_negative": ["{} of 60", "{}/60 runs"],
+    "e4_ap_runs_negative": ["{} of 60 runs", "{}/60 runs"],
     "e4_ap_grand_mean": ["{} average precision", "mean of {}"],
     "e4_ap_worst_cell": ["worst cell loses {}", "down {}"],
     "e4_auc_cells_positive": ["{} of the same 12", "{} cells improve"],
+    "e4_auc_runs_negative": ["{} of 60 runs", "{} runs got worse"],
     "e4_auc_grand_mean": ["{} ROC-AUC", "gains {}"],
     "e4_loss_gain_ratio": ["{} times larger", "{} times the size"],
 }
+
+# The README publishes a full row per resampler and per estimator. Every cell in those
+# tables is a measurement, so every cell gets a metric and an anchor rather than being
+# hidden inside a code fence where the reverse check cannot see it. The anchor for a table
+# cell is the bare value plus its row label, which is how it reads on the page.
+TABLE_ANCHOR = "| {} |"
+
+
+def table_anchors(prefix: str, names: tuple[str, ...], fields: tuple[str, ...]) -> dict:
+    out = {}
+    for name in names:
+        for field in fields:
+            out[f"{prefix}_{name}_{field}"] = [TABLE_ANCHOR]
+    return out
 
 
 def run(cmd: list[str], **kwargs) -> subprocess.CompletedProcess:
@@ -123,6 +139,14 @@ def ensure_experiments(rerun: bool) -> dict[str, dict]:
     return payloads
 
 
+E2_ROWS = ("random_over", "smote", "adasyn", "random_under")
+E3_ROWS = ("tree", "knn", "forest", "logistic")
+
+ANCHORS.update(table_anchors("e1", ("corrected", "control"), ("cv", "holdout", "optimism")))
+ANCHORS.update(table_anchors("e2", E2_ROWS, ("cv", "optimism")))
+ANCHORS.update(table_anchors("e3", E3_ROWS, ("cv", "holdout", "optimism")))
+
+
 def derive(suite: dict, exp: dict[str, dict]) -> dict[str, float | int]:
     e1 = exp["e1_headline"]["headline"]
     e2 = exp["e2_by_resampler"]
@@ -134,7 +158,7 @@ def derive(suite: dict, exp: dict[str, dict]) -> dict[str, float | int]:
     worst_est = e3["worst_optimism"]
     mildest_est = e3["mildest_optimism"]
 
-    return {
+    metrics: dict[str, float | int] = {
         "tests_total": suite["tests_total"],
         "coverage_line_pct": suite["coverage_line_pct"],
         "leaked_cv_mean": round(e1["leaked_cv_mean"], 4),
@@ -154,11 +178,36 @@ def derive(suite: dict, exp: dict[str, dict]) -> dict[str, float | int]:
         "e4_ap_grand_mean": round(ap["grand_mean_benefit"], 4),
         "e4_ap_worst_cell": round(ap["worst_cell"]["benefit_mean"], 4),
         "e4_auc_cells_positive": auc["cells_positive"],
+        "e4_auc_runs_negative": auc["runs_negative"],
         "e4_auc_grand_mean": round(auc["grand_mean_benefit"], 4),
         "e4_loss_gain_ratio": round(
             abs(ap["grand_mean_benefit"]) / abs(auc["grand_mean_benefit"]), 1
         ),
+        "leaked_optimism_spread": round(
+            exp["e1_headline"]["summary"]["leaked_resample_then_cv"]["optimism_spread"], 4
+        ),
     }
+
+    # Every cell of the three published tables, so the reverse check has something to
+    # match and a drifting table breaks the build like any other figure.
+    e1_summary = exp["e1_headline"]["summary"]
+    for label, key in (("corrected", "correct_resample_in_fold"), ("control", "no_resampling")):
+        metrics[f"e1_{label}_cv"] = round(e1_summary[key]["cv_estimate_mean"], 4)
+        metrics[f"e1_{label}_holdout"] = round(e1_summary[key]["holdout_score_mean"], 4)
+        metrics[f"e1_{label}_optimism"] = round(e1_summary[key]["optimism_mean"], 4)
+
+    for name in E2_ROWS:
+        row = e2["by_resampler"][name]
+        metrics[f"e2_{name}_cv"] = round(row["leaked_cv_mean"], 4)
+        metrics[f"e2_{name}_optimism"] = round(row["optimism_mean"], 4)
+
+    for name in E3_ROWS:
+        row = e3["by_estimator"][name]
+        metrics[f"e3_{name}_cv"] = round(row["leaked_cv_mean"], 4)
+        metrics[f"e3_{name}_holdout"] = round(row["holdout_mean"], 4)
+        metrics[f"e3_{name}_optimism"] = round(row["optimism_mean"], 4)
+
+    return metrics
 
 
 # Formatting is declared per metric rather than inferred from the name. The first version
@@ -176,6 +225,7 @@ SIGNED = frozenset(
         "e4_auc_grand_mean",
     }
 )
+SIGNED_SUFFIX = "_optimism"
 ONE_PLACE = frozenset({"estimator_severity_ratio", "e4_loss_gain_ratio"})
 
 
@@ -189,7 +239,7 @@ def display_strings(metrics: dict) -> dict[str, str]:
             out[key] = f"{value:.1f}"
         elif key == "coverage_line_pct":
             out[key] = f"{value:.0f}" if float(value).is_integer() else f"{value:.1f}"
-        elif key in SIGNED:
+        elif key in SIGNED or key.endswith(SIGNED_SUFFIX):
             out[key] = f"{value:+.4f}"
         else:
             out[key] = f"{value:.4f}"

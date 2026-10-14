@@ -29,11 +29,17 @@ HTML_ATTR = re.compile(r"<[^>]+>")
 LINK_TARGET = re.compile(r"\]\([^)]*\)")
 DECIMAL = re.compile(r"(?<![\w.])[+-]?\d+\.\d+(?![\w.])")
 
+# Emphasis markers are removed before matching. A figure in prose is almost always bolded,
+# and an anchor reading "worst cell loses {}" then fails against the perfectly correct
+# "worst cell loses **-0.1063**". This is the same class of problem as a wrapped line: the
+# prose is right and the checker is looking at the wrong string.
+EMPHASIS = re.compile(r"\*\*|\*|(?<!\w)_(?!\w)")
+
 
 def strip_uncheckable(text: str) -> str:
     for pattern in (FENCE, INLINE_CODE, HTML_ATTR, LINK_TARGET):
         text = pattern.sub(" ", text)
-    return text
+    return EMPHASIS.sub("", text)
 
 
 def normalise(text: str) -> str:

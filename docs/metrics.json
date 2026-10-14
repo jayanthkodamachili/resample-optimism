@@ -19,8 +19,36 @@
     "e4_ap_grand_mean": -0.046,
     "e4_ap_worst_cell": -0.1063,
     "e4_auc_cells_positive": 9,
+    "e4_auc_runs_negative": 20,
     "e4_auc_grand_mean": 0.0069,
-    "e4_loss_gain_ratio": 6.7
+    "e4_loss_gain_ratio": 6.7,
+    "leaked_optimism_spread": 0.1601,
+    "e1_corrected_cv": 0.8575,
+    "e1_corrected_holdout": 0.8739,
+    "e1_corrected_optimism": -0.0164,
+    "e1_control_cv": 0.8311,
+    "e1_control_holdout": 0.8458,
+    "e1_control_optimism": -0.0146,
+    "e2_random_over_cv": 1.0,
+    "e2_random_over_optimism": 0.1169,
+    "e2_smote_cv": 0.9975,
+    "e2_smote_optimism": 0.1156,
+    "e2_adasyn_cv": 0.9978,
+    "e2_adasyn_optimism": 0.117,
+    "e2_random_under_cv": 0.8414,
+    "e2_random_under_optimism": -0.0222,
+    "e3_tree_cv": 0.9774,
+    "e3_tree_holdout": 0.6559,
+    "e3_tree_optimism": 0.3215,
+    "e3_knn_cv": 0.9877,
+    "e3_knn_holdout": 0.7534,
+    "e3_knn_optimism": 0.2343,
+    "e3_forest_cv": 1.0,
+    "e3_forest_holdout": 0.8831,
+    "e3_forest_optimism": 0.1169,
+    "e3_logistic_cv": 0.8466,
+    "e3_logistic_holdout": 0.8371,
+    "e3_logistic_optimism": 0.0095
   },
   "display": {
     "tests_total": "90",
@@ -42,8 +70,36 @@
     "e4_ap_grand_mean": "-0.0460",
     "e4_ap_worst_cell": "-0.1063",
     "e4_auc_cells_positive": "9",
+    "e4_auc_runs_negative": "20",
     "e4_auc_grand_mean": "+0.0069",
-    "e4_loss_gain_ratio": "6.7"
+    "e4_loss_gain_ratio": "6.7",
+    "leaked_optimism_spread": "0.1601",
+    "e1_corrected_cv": "0.8575",
+    "e1_corrected_holdout": "0.8739",
+    "e1_corrected_optimism": "-0.0164",
+    "e1_control_cv": "0.8311",
+    "e1_control_holdout": "0.8458",
+    "e1_control_optimism": "-0.0146",
+    "e2_random_over_cv": "1.0000",
+    "e2_random_over_optimism": "+0.1169",
+    "e2_smote_cv": "0.9975",
+    "e2_smote_optimism": "+0.1156",
+    "e2_adasyn_cv": "0.9978",
+    "e2_adasyn_optimism": "+0.1170",
+    "e2_random_under_cv": "0.8414",
+    "e2_random_under_optimism": "-0.0222",
+    "e3_tree_cv": "0.9774",
+    "e3_tree_holdout": "0.6559",
+    "e3_tree_optimism": "+0.3215",
+    "e3_knn_cv": "0.9877",
+    "e3_knn_holdout": "0.7534",
+    "e3_knn_optimism": "+0.2343",
+    "e3_forest_cv": "1.0000",
+    "e3_forest_holdout": "0.8831",
+    "e3_forest_optimism": "+0.1169",
+    "e3_logistic_cv": "0.8466",
+    "e3_logistic_holdout": "0.8371",
+    "e3_logistic_optimism": "+0.0095"
   },
   "anchors": {
     "tests_total": [
@@ -93,6 +149,10 @@
       "{} times",
       "a factor of {}"
     ],
+    "leaked_optimism_spread": [
+      "{} across seeds",
+      "spread of {}"
+    ],
     "e4_cells_total": [
       "of {} cells",
       "{} cells swept"
@@ -106,7 +166,7 @@
       "{}/12 cells"
     ],
     "e4_ap_runs_negative": [
-      "{} of 60",
+      "{} of 60 runs",
       "{}/60 runs"
     ],
     "e4_ap_grand_mean": [
@@ -121,6 +181,10 @@
       "{} of the same 12",
       "{} cells improve"
     ],
+    "e4_auc_runs_negative": [
+      "{} of 60 runs",
+      "{} runs got worse"
+    ],
     "e4_auc_grand_mean": [
       "{} ROC-AUC",
       "gains {}"
@@ -128,6 +192,84 @@
     "e4_loss_gain_ratio": [
       "{} times larger",
       "{} times the size"
+    ],
+    "e1_corrected_cv": [
+      "| {} |"
+    ],
+    "e1_corrected_holdout": [
+      "| {} |"
+    ],
+    "e1_corrected_optimism": [
+      "| {} |"
+    ],
+    "e1_control_cv": [
+      "| {} |"
+    ],
+    "e1_control_holdout": [
+      "| {} |"
+    ],
+    "e1_control_optimism": [
+      "| {} |"
+    ],
+    "e2_random_over_cv": [
+      "| {} |"
+    ],
+    "e2_random_over_optimism": [
+      "| {} |"
+    ],
+    "e2_smote_cv": [
+      "| {} |"
+    ],
+    "e2_smote_optimism": [
+      "| {} |"
+    ],
+    "e2_adasyn_cv": [
+      "| {} |"
+    ],
+    "e2_adasyn_optimism": [
+      "| {} |"
+    ],
+    "e2_random_under_cv": [
+      "| {} |"
+    ],
+    "e2_random_under_optimism": [
+      "| {} |"
+    ],
+    "e3_tree_cv": [
+      "| {} |"
+    ],
+    "e3_tree_holdout": [
+      "| {} |"
+    ],
+    "e3_tree_optimism": [
+      "| {} |"
+    ],
+    "e3_knn_cv": [
+      "| {} |"
+    ],
+    "e3_knn_holdout": [
+      "| {} |"
+    ],
+    "e3_knn_optimism": [
+      "| {} |"
+    ],
+    "e3_forest_cv": [
+      "| {} |"
+    ],
+    "e3_forest_holdout": [
+      "| {} |"
+    ],
+    "e3_forest_optimism": [
+      "| {} |"
+    ],
+    "e3_logistic_cv": [
+      "| {} |"
+    ],
+    "e3_logistic_holdout": [
+      "| {} |"
+    ],
+    "e3_logistic_optimism": [
+      "| {} |"
     ]
   },
   "checked_documents": [
