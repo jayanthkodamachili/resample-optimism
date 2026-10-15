@@ -29,7 +29,7 @@ EXPERIMENTS = (
 
 CHECKED_DOCUMENTS = (
     "README.md",
-    "docs/defense-guide.md",
+
     "docs/adr/ADR-005-what-this-cannot-measure.md",
 )
 
