@@ -175,7 +175,7 @@ Codes 0 and 1 both mean the tool worked. Only 2 and 3 mean it did not. A tool th
 
 The number checker matches anchor phrases rather than bare digits, in both directions. Forward, every metric must appear in a checked document using its anchor wording, so a figure that drifts breaks the build. Backward, every decimal in the prose must correspond to a metric, so a number nothing re-measures cannot take up residence. Digits alone would be useless: a search for a small integer matches a version string and half the list items on the page, and a search for the right digits passes happily in a sentence that has gone stale around them.
 
-Both directions are needed, and proving it is easy. Change one figure in the README alone and the forward check still passes, because the defense guide carries the same figure and an anchor is satisfied by any checked document. The reverse check is what catches it. Change it in both and the forward check fires too. Try it before trusting any number here.
+
 
 ## Stack
 
