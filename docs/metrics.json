@@ -274,7 +274,7 @@
   },
   "checked_documents": [
     "README.md",
-    "docs/defense-guide.md",
+    
     "docs/adr/ADR-005-what-this-cannot-measure.md"
   ],
   "note": "every value here is produced by running the suite and the four experiments"
